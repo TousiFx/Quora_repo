@@ -1,0 +1,96 @@
+/* Universal reset and base layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background-color: #f1f2f2; /* Quora background light grey */
+  color: #282829; /* Dark grey for better readability */
+  line-height: 1.5;
+  padding: 40px 20px 100px 20px; /* Added extra bottom padding so elements don't hide under the button */
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Page heading */
+h1 {
+  text-align: center;
+  color: #b92b27; /* Quora classic red */
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Container for individual posts */
+.post {
+  background-color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 16px auto; /* Centers the post card and handles spacing */
+  padding: 16px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Username/handle styling */
+.post h3:first-of-type {
+  color: #282829;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.post h3:first-of-type:hover {
+  text-decoration: underline;
+}
+
+/* Content styling */
+.post h3:last-of-type {
+  color: #333333;
+  font-size: 1.05rem;
+  font-weight: 400; /* Regular weight for content text */
+}
+
+/* Floating Action Button (FAB) for Creating New Post */
+a[href="http://localhost:8080/posts/new"] {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background-color: #b92b27; /* Quora Red */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  z-index: 1000;
+}
+
+/* Adding a visual "+" icon inside the empty link tag */
+a[href="http://localhost:8080/posts/new"]::before {
+  content: "+";
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+/* Interactive button effects */
+a[href="http://localhost:8080/posts/new"]:hover {
+  background-color: #9b201d;
+  transform: scale(1.05);
+}
+
+a[href="http://localhost:8080/posts/new"]:active {
+  transform: scale(0.95);
+}
