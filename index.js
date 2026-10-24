@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 app.use(express.urlencoded({ extended: true }));
 let port = 8080;
@@ -11,17 +12,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const posts = [
   {
-    id: "a1",
+    id: uuidv4(),
     username: "apna_collage",
     contant: "apna collage have best web development couses",
   },
   {
-    id: "a2",
+    id: uuidv4(),
     username: "Tousif",
     contant: "Hii! i'm learning web development with apna collage",
   },
   {
-    id: "a3",
+    id: uuidv4(),
     username: "Zain_123",
     contant: "I have a laptop which is very low end laptop am i able to code",
   },
@@ -37,7 +38,8 @@ app.get("/posts/new", (req, res) => {
 
 app.post("/posts", (req, res) => {
   let { username, contant } = req.body;
-  posts.push({ username, contant });
+  let id = uuidv4();
+  posts.push({ id, username, contant });
   res.redirect("/posts");
 });
 
