@@ -50,7 +50,7 @@ app.get("/posts/:id", (req, res) => {
   res.render("show", { post });
 });
 app.patch("/posts/:id", (req, res) => {
-  const newContant = req.body.contant;
+  let newContant = req.body.contant;
   console.log(newContant);
   res.send("post has been patched");
 });
