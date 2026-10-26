@@ -28,6 +28,11 @@ const posts = [
     username: "Zain_123",
     contant: "I have a laptop which is very low end laptop am i able to code",
   },
+  {
+    id: uuidv4(),
+    username: "Omair_121",
+    contant: "Cool and very nice work by apna collage",
+  },
 ];
 
 app.get("/posts", (req, res) => {
