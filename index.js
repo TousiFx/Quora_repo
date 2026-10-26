@@ -3,13 +3,11 @@ const app = express();
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
-let port = 8080;
-
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
+let port = 8080;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const posts = [
@@ -27,11 +25,6 @@ const posts = [
     id: uuidv4(),
     username: "Zain_123",
     contant: "I have a laptop which is very low end laptop am i able to code",
-  },
-  {
-    id: uuidv4(),
-    username: "Omair_121",
-    contant: "Cool and very nice work by apna collage",
   },
 ];
 
@@ -56,11 +49,7 @@ app.get("/posts/:id", (req, res) => {
   console.log(post);
   res.render("show", { post });
 });
-app.patch("/posts/:id", (req, res) => {
-  let newContant = req.body.contant;
-  console.log(newContant);
-  res.send("post has been patched");
-});
+
 app.listen(port, () => {
   console.log(`Port ${port} has connected`);
 });
