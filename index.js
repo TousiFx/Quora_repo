@@ -49,7 +49,11 @@ app.get("/posts/:id", (req, res) => {
   console.log(post);
   res.render("show", { post });
 });
-
+app.patch("/posts/:id", (req, res) => {
+  const newContant = req.body.contant;
+  console.log(newContant);
+  res.send("post has been patched");
+});
 app.listen(port, () => {
   console.log(`Port ${port} has connected`);
 });
