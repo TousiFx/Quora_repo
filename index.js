@@ -14,17 +14,17 @@ const posts = [
   {
     id: uuidv4(),
     username: "apna_collage",
-    contant: "apna collage have best web development couses",
+    content: "apna collage have best web development couses",
   },
   {
     id: uuidv4(),
     username: "Tousif",
-    contant: "Hii! i'm learning web development with apna collage",
+    content: "Hii! i'm learning web development with apna collage",
   },
   {
     id: uuidv4(),
     username: "Zain_123",
-    contant: "I have a laptop which is very low end laptop am i able to code",
+    content: "I have a laptop which is very low end laptop am i able to code",
   },
 ];
 
@@ -37,9 +37,9 @@ app.get("/posts/new", (req, res) => {
 });
 
 app.post("/posts", (req, res) => {
-  let { username, contant } = req.body;
+  let { username, content } = req.body;
   let id = uuidv4();
-  posts.push({ id, username, contant });
+  posts.push({ id, username, content });
   res.redirect("/posts");
 });
 
@@ -48,6 +48,21 @@ app.get("/posts/:id", (req, res) => {
   let post = posts.find((p) => id === p.id);
   console.log(post);
   res.render("show", { post });
+});
+app.patch("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let newContent = req.body.content;
+
+  let post = posts.find((p) => id === p.id);
+  post.content = newContent;
+  res.send("post has been patched");
+  console.log(post);
+});
+
+app.get("/posts/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let post = posts.find((p) => id === p.id);
+  res.render("edit", { post });
 });
 
 app.listen(port, () => {

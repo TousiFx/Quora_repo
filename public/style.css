@@ -54,22 +54,26 @@ h1 {
   margin-bottom: 12px;
 }
 
-.post a[href^="http://localhost:8080/posts/"] {
+/* --- Fixed Link Styles --- */
+.post a {
   display: inline-block;
   font-size: 0.85rem;
   color: #2b6cb0;
   text-decoration: none;
   font-weight: 500;
+  margin-right: 12px; /* Adds spacing between View Details and Edit */
 }
 
-.post a[href^="http://localhost:8080/posts/"]::before {
-  content: "View Details";
-}
-
-.post a[href^="http://localhost:8080/posts/"]:hover {
+.post a:hover {
   text-decoration: underline;
 }
 
+/* Styling specifically for the Edit link if you want it to look different */
+.post a#edit {
+  color: #631715; /* Subdued red/brown tone for secondary actions */
+}
+
+/* --- Floating Action Button ("New Post") --- */
 a[href="http://localhost:8080/posts/new"] {
   position: fixed;
   bottom: 30px;
