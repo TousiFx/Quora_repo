@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
+const methodOverride = require("method-override");
+
+let port = 8080;
 
 app.use(express.urlencoded({ extended: true }));
-let port = 8080;
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
 app.use(express.static(path.join(__dirname, "public")));
 
 const posts = [
@@ -55,7 +57,7 @@ app.patch("/posts/:id", (req, res) => {
 
   let post = posts.find((p) => id === p.id);
   post.content = newContent;
-  res.send("post has been patched");
+  res.redirect("/posts");
   console.log(post);
 });
 
@@ -63,6 +65,12 @@ app.get("/posts/:id/edit", (req, res) => {
   let { id } = req.params;
   let post = posts.find((p) => id === p.id);
   res.render("edit", { post });
+});
+app.delete("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let postIndex = posts.findIndex((p) => id === p.id);
+  if (postIndex !== -1) posts.splice(postIndex, 1);
+  res.redirect("/posts");
 });
 
 app.listen(port, () => {

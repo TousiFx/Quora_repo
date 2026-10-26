@@ -108,3 +108,22 @@ a[href="http://localhost:8080/posts/new"]:hover {
 a[href="http://localhost:8080/posts/new"]:active {
   transform: scale(0.95);
 }
+/* --- Delete Button Styles --- */
+#btn-del {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #718096; /* Subdued slate gray for standard state */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#btn-del:hover {
+  color: #e53e3e; /* Clear red tone on hover to signal deletion */
+  text-decoration: underline;
+}
