@@ -28,6 +28,16 @@ const posts = [
     username: "Zain_123",
     content: "I have a laptop which is very low end laptop am i able to code",
   },
+  {
+    id: uuidv4(),
+    username: "Adin_121",
+    content: "I love coding using javascript and EJS",
+  },
+  {
+    id: uuidv4(),
+    username: "Aquik",
+    content: "I hope this will work for me",
+  },
 ];
 
 app.get("/posts", (req, res) => {
