@@ -43,6 +43,11 @@ const posts = [
     username: "Aquik",
     content: "I hope this will work for me",
   },
+  {
+    id: uuidv4(),
+    username: "Aquik",
+    content: "I hope this will work for me",
+  },
 ];
 
 app.get("/posts", (req, res) => {
